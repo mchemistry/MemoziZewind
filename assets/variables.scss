@@ -1,0 +1,31 @@
+$body-font-family: 'Baloo Tamma 2', cursive !default;
+$material-dark: (
+  'background': #161122,
+  'app-bar': #6B048C,
+  'status-bar': (
+      'regular': #fff,
+      'lights-out': #fff
+  ),
+  'inputs': (
+      'box': #6B048C,
+    ),
+  'icons': (
+    'active': #c4c4c4 ,
+    'inactive': #c4c4c491,
+  ),
+  'text-color': #c4c4c4,
+) !default;
+$badge-height: 18px !default;
+$badge-width: 16px !default;
+$badge-border-radius: 8px !default;
+$text-field-padding: 4px 0 4px !default;
+$input-font-size: 16px !default;
+$text-field-dense-icon-append-prepend-margin-top: 8px !default;
+$text-field-details-margin-bottom: 4px !default;
+$text-field-append-prepend-margin: 4px !default;
+$text-field-single-line-prepend-append-margin-top: 16px;
+$input-icon-width: 16px !default;
+$input-icon-height: 16px !default;
+$text-field-outlined-rounded-slot-padding: 0 10px !default;
+@import '~vuetify/src/styles/styles.sass';
+@import './_animation.scss'

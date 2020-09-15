@@ -1,0 +1,67 @@
+{
+  "tracks": [{
+      "name": "Everything I Need",
+      "artist": "Skylar Grey",
+      "cover": "https://data.chiasenhac.com/data/cover/99/98326.jpg",
+      "source": "https://raw.githubusercontent.com/mchemistry/ClassSurvey/master/test/Everything%20I%20Need%20-%20Skylar%20Grey.mp3",
+      "url": "https://www.youtube.com/watch?v=z3wAjJXbYzA",
+      "favorited": false
+    },
+    {
+      "name": "Rise",
+      "artist": "Jonas Blue ft Jack & Jack",
+      "cover": "https://data.chiasenhac.com/data/cover/89/88398.jpg",
+      "source": "https://raw.githubusercontent.com/mchemistry/ClassSurvey/master/test/Rise%20-%20Jonas%20Blue_%20Jack%20Jack.mp3",
+      "url": "https://www.youtube.com/watch?v=Lin-a2lTelg",
+      "favorited": true
+    },
+    {
+      "name": "Người hãy quên em đi",
+      "artist": "Mỹ Tâm",
+      "cover": "https://data.chiasenhac.com/data/artist_avatar/1/143.jpg",
+      "source": "https://raw.githubusercontent.com/mchemistry/ClassSurvey/master/test/Nguoi%20Hay%20Quen%20Em%20Di%20-%20My%20Tam.mp3",
+      "url": "https://www.youtube.com/watch?v=ICjyAe9S54c",
+      "favorited": false
+    },
+    {
+      "name": "Butterflies",
+      "artist": "Sia",
+      "cover": "https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/4.jpg",
+      "source": "https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/4.mp3",
+      "url": "https://www.youtube.com/watch?v=kYgGwWYOd9Y",
+      "favorited": false
+    },
+    {
+      "name": "The Final Victory",
+      "artist": "Haggard",
+      "cover": "https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/5.jpg",
+      "source": "https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/5.mp3",
+      "url": "https://www.youtube.com/watch?v=0WlpALnQdN8",
+      "favorited": true
+    },
+    {
+      "name": "Genius ft. Sia, Diplo bdjsdjbsjdsjdjsj,",
+      "artist": "LSD",
+      "cover": "https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/6.jpg",
+      "source": "https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/6.mp3",
+      "url": "https://www.youtube.com/watch?v=HhoATZ1Imtw",
+      "favorited": false
+    },
+    {
+      "name": "The Comeback Kid",
+      "artist": "Lindi Ortega",
+      "cover": "https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/7.jpg",
+      "source": "https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/7.mp3",
+      "url": "https://www.youtube.com/watch?v=me6aoX0wCV8",
+      "favorited": true
+    },
+    {
+      "name": "Overdose",
+      "artist": "Grandson",
+      "cover": "https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/8.jpg",
+      "source": "https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/8.mp3",
+      "url": "https://www.youtube.com/watch?v=00-Rl3Jlx-o",
+      "favorited": false
+    }
+  ]
+}

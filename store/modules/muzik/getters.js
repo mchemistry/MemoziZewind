@@ -1,0 +1,18 @@
+export const getters = {
+  tracks: ({ tracks }) => tracks,
+  isPlay: ({ isPlay }) => isPlay,
+  isShuffle: ({ isShuffle }) => isShuffle,
+  repeat: ({ repeat }) => repeat,
+  duration: ({ duration }) => duration,
+  currentTime: ({ currentTime }) => currentTime,
+  barTimer: ({ barTimer }) => barTimer,
+  audio: ({ audio }) => audio,
+  canPlay: ({ canPlay }) => canPlay,
+  top: ({ top }) => top,
+  lyzik: ({ lyzik }) => lyzik,
+  timerLyzik: ({ timerLyzik }) => timerLyzik,
+  saveIndexOfLyzik: ({ saveIndexOfLyzik }) => saveIndexOfLyzik,
+  muted: ({ muted }) => muted,
+  currentTrackIndex: ({ currentTrackIndex }) => currentTrackIndex,
+  currentTrack: ({ currentTrack }) => currentTrack,
+}
