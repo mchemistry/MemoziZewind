@@ -91,9 +91,9 @@
                 {{ item.artist }}
               </v-list-item-title>
             </v-list-item-content>
-            <span class="total-track-timer white--text text-body-2 mr-3"
-              >03:49</span
-            >
+            <span class="total-track-timer white--text text-body-2 mr-3">
+              {{ item.duration }}
+            </span>
             <span
               v-if="index === currentTrackIndex"
               class="track-timer-bar"

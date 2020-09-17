@@ -15,8 +15,10 @@ export const actions = {
         if (
           _.isEqual(state.currentTrack, state.tracks[state.tracks.length - 1])
         ) {
-          state.audio.pause()
-          state.isPlay = false
+          state.isTimerPlaying = false
+          state.currentTrack = state.tracks[state.tracks.length - 1]
+          state.currentTrackIndex = state.tracks.length - 1
+          dispatch('resetPlayer')
         } else {
           dispatch('nextSong')
         }

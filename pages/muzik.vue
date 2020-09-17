@@ -16,7 +16,7 @@
       <Lyzik
         class="mt-10"
         :top="top"
-        :lyzik="lyzik"
+        :lyzik="currentTrack.lyzik.text"
         :save-index-of-lyzik="saveIndexOfLyzik"
         :window-width="windowWidth"
         :window-height="windowHeight"
@@ -24,7 +24,7 @@
       <Player
         class="mt-10"
         :is-play="isPlay"
-        :duration="duration"
+        :duration="currentTrack.duration"
         :current-time="currentTime"
         :bar-timer="barTimer"
         :can-play="canPlay"
@@ -60,7 +60,6 @@ export default {
       'isPlay',
       'isShuffle',
       'repeat',
-      'duration',
       'currentTime',
       'barTimer',
       'canPlay',

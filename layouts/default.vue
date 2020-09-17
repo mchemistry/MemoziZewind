@@ -3,7 +3,9 @@
     <client-only>
       <hiden-layout />
       <side-bar
-        :router-name="$route.name === 'index' ? 'TimeLine' : $route.name"
+        :router-name="
+          $route.name === 'index' ? 'TIMELINE' : $route.name.toUpperCase()
+        "
       />
       <dragable-player v-if="!isMuzikPage && windowWidth < 500" />
     </client-only>

@@ -75,11 +75,9 @@ export const mutations = {
     if (state.isTimerPlaying) {
       state.audio.play()
       state.isPlay = true
-      state.isTimerPlaying = true
     } else {
       state.audio.pause()
       state.isPlay = false
-      state.isTimerPlaying = false
     }
   },
   SHUFFLE_TRACKS: (state) => {
@@ -125,8 +123,8 @@ export const mutations = {
     //    const breakPointTime = state.audio.currentTime
     let count = 0
     let saveIndex = 0
-    for (let i = 3; i < state.lyzik.length; i++) {
-      if (state.timerLyzik[i] < Math.ceil(curTimer)) {
+    for (let i = 3; i < state.currentTrack.lyzik.timer.length; i++) {
+      if (state.currentTrack.lyzik.timer[i] < Math.ceil(curTimer)) {
         count++
       } else {
         saveIndex = i
@@ -144,10 +142,10 @@ export const mutations = {
     state.isPlay = true
   },
   LYZIK_TRACK: (state) => {
-    const len = state.timerLyzik.length
+    const len = state.currentTrack.lyzik.timer.length
     const timer = Math.ceil(state.audio.currentTime)
     for (let i = state.saveIndexOfLyzik; i < len; i++) {
-      if (_.isEqual(timer, state.timerLyzik[i])) {
+      if (_.isEqual(timer, state.currentTrack.lyzik.timer[i])) {
         state.top -= 23
         state.saveIndexOfLyzik++
       }

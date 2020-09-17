@@ -1,6 +1,6 @@
 <template>
   <v-container class="py-15" style="z-index: 1 !important">
-    <text-emoji :size="20" />
+    <text-emoji :size="20" text="Em là ai trong thế giới này :D " />
   </v-container>
 </template>
 
