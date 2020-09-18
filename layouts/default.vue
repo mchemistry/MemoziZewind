@@ -7,7 +7,12 @@
           $route.name === 'index' ? 'TIMELINE' : $route.name.toUpperCase()
         "
       />
-      <dragable-player v-if="!isMuzikPage && windowWidth < 500" />
+      <dragable-player
+        v-if="!isMuzikPage && windowWidth < 500 && toggleMuzikPlayer"
+        :is-play="isPlay"
+        :can-play="canPlay"
+        :current-track="currentTrack"
+      />
     </client-only>
     <v-slide-x-transition>
       <nuxt :nuxt-child-key="$route.name" />
@@ -27,7 +32,12 @@ export default {
     DragablePlayer,
   },
   computed: {
-    ...mapGetters('layout', ['isMuzikPage', 'windowWidth']),
+    ...mapGetters('layout', [
+      'isMuzikPage',
+      'windowWidth',
+      'toggleMuzikPlayer',
+    ]),
+    ...mapGetters('muzik', ['isPlay', 'canPlay', 'currentTrack']),
   },
 }
 </script>

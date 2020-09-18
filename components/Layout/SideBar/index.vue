@@ -78,6 +78,21 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
+      <v-divider></v-divider>
+      <v-list-item-content class="d-flex flex-row">
+        <v-list-item-subtitle
+          class="element--text text-subtitle-2 d-flex flex-row ml-3"
+        >
+          @Setting
+        </v-list-item-subtitle>
+      </v-list-item-content>
+      <v-divider></v-divider>
+      <v-switch
+        v-model="toggleMiniPlayer"
+        color="element"
+        label="SHOW MINI PLAYER"
+        class="ml-3"
+      ></v-switch>
     </v-navigation-drawer>
   </div>
 </template>
@@ -106,11 +121,29 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('layout', ['isMuzikPage', 'windowWidth', 'windowHeight']),
+    ...mapGetters('layout', [
+      'isMuzikPage',
+      'windowWidth',
+      'windowHeight',
+      'toggleMuzikPlayer',
+    ]),
     ...mapGetters('muzik', ['isPlay', 'canPlay']),
+    toggleMiniPlayer: {
+      get() {
+        return this.toggleMuzikPlayer
+      },
+      set() {
+        this.togglePlayer()
+      },
+    },
   },
   methods: {
-    ...mapActions('layout', ['checkMuzikPage', 'getLayoutSize']),
+    ...mapActions('layout', [
+      'checkMuzikPage',
+      'getLayoutSize',
+      'togglePlayer',
+      'showMiniPlayer',
+    ]),
     ...mapActions('muzik', [
       'prevSong',
       'nextSong',

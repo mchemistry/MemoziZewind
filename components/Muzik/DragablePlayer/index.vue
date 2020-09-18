@@ -12,21 +12,24 @@
   >
     <img
       class="muzik-cover"
-      src="https://decider.com/wp-content/uploads/2020/03/sonic-the-hedgehog.jpg?quality=90&strip=all&w=646&h=431&crop=1"
+      :src="currentTrack.cover"
       alt="muzik cover"
+      :style="style"
     />
     <v-slide-x-transition>
       <div v-if="show" class="player-controller d-flex flex-row py-1">
-        <v-btn icon class="ml-4">
+        <v-btn icon class="ml-4" :disabled="!canPlay" @click="prevSong()">
           <v-icon color="white"> mdi mdi-skip-previous </v-icon>
         </v-btn>
-        <v-btn icon>
-          <v-icon color="white"> mdi mdi-play </v-icon>
+        <v-btn icon :disabled="!canPlay" @click="playMuzik()">
+          <v-icon color="white">
+            {{ isPlay ? 'mdi mdi-pause-circle' : 'mdi mdi-play-circle' }}
+          </v-icon>
         </v-btn>
-        <v-btn icon>
-          <v-icon color="white"> mdi mdi-skip-next </v-icon>
+        <v-btn icon :disabled="!canPlay">
+          <v-icon color="white" @click="nextSong()"> mdi mdi-skip-next </v-icon>
         </v-btn>
-        <v-btn icon class="mr-1">
+        <v-btn icon class="mr-1" @click="togglePlayer()">
           <v-icon color="white"> mdi mdi-close-circle </v-icon>
         </v-btn>
       </div>
@@ -35,8 +38,24 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'DragablePlayer',
+  props: {
+    isPlay: {
+      type: Boolean,
+      default: false,
+    },
+    canPlay: {
+      type: Boolean,
+      default: false,
+    },
+    currentTrack: {
+      type: Object,
+      default: () => {},
+    },
+  },
   data() {
     return {
       show: false,
@@ -48,12 +67,21 @@ export default {
       dragable: null,
     }
   },
+  computed: {
+    style() {
+      const style = {}
+      style.animation = this.isPlay ? 'rotation 10s infinite linear' : ''
+      return style
+    },
+  },
   mounted() {
     this.dragable = this.$refs['player-dragable']
     this.width = this.dragable.offsetWidth
     this.height = this.dragable.offsetHeight
   },
   methods: {
+    ...mapActions('muzik', ['prevSong', 'nextSong', 'playMuzik']),
+    ...mapActions('layout', ['togglePlayer']),
     initDragableEvent(e) {
       this.isMouseDown = true
       this.initXPos = e.offsetX
@@ -105,7 +133,6 @@ export default {
     height: 3.5rem;
     border-radius: 50%;
     border: 0.25rem solid rgba(0, 89, 255, 0.329);
-    animation: rotation 10s infinite linear;
     z-index: 99;
   }
   .player-controller {
