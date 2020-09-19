@@ -70,7 +70,9 @@ export default {
   computed: {
     style() {
       const style = {}
-      style.animation = this.isPlay ? 'rotation 10s infinite linear' : ''
+      style.animation = this.isPlay
+        ? 'rotation-data-v-341b41c8 10s infinite linear'
+        : ''
       return style
     },
   },
