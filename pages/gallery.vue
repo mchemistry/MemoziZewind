@@ -1,9 +1,11 @@
 <template>
   <v-container class="py-10 px-0 mx-auto gallery-page">
     <client-only>
-      <vue-scroll :ops="ops">
-        <vue-picture-swipe :items="items"></vue-picture-swipe>
-      </vue-scroll>
+      <vue-picture-swipe
+        :items="items"
+        class="gallery"
+        :options="ops"
+      ></vue-picture-swipe>
     </client-only>
   </v-container>
 </template>
@@ -95,67 +97,65 @@ export default {
         },
       ],
       ops: {
-        rail: {
-          opacity: '1',
-          background: 'trasparent',
-          border: 'none',
-          specifyBorderRadius: '0px',
-          size: '6px',
-          gutterOfSide: '0px',
-          keepShow: false,
-        },
-        bar: {
-          background: 'rgba(240, 248, 255, 0.267)',
-          keepShow: true,
-          size: '3px',
-          minSize: 0,
-          specifyBorderRadius: '5px',
-        },
-        scrollButton: {
-          enable: false,
-          background: '#cecece',
-        },
-        scrollPanel: {
-          easing: 'easeInQuad',
-          speed: 800,
-        },
-        vuescroll: {
-          wheelScrollDuration: 0,
-          wheelDirectionReverse: false,
-        },
-        maxHeight: 1,
+        history: true,
+        closeOnScroll: false,
+        bgOpacity: 0.95,
+        preload: [1, 3],
       },
     }
   },
 }
 </script>
-<style lang="scss" scoped>
+<style scoped>
 .gallery-page {
   overflow: hidden !important;
-  .pswp__bg {
-    background-color: #2f2f2f;
-  }
-
-  .my-gallery {
-    display: flex;
-    flex-flow: row wrap;
-    figure {
-      flex-grow: 1;
-      min-width: 20%;
-      margin-left: 5px;
-      margin-right: 5px;
-      a {
-        img {
-          border-radius: 10px;
-          box-shadow: 5px 3px 5px #2f2f2f;
-          &:hover {
-            transform: scale(1.05);
-            box-shadow: 5px 3px 5px #c9c3b2;
-            transition: all 0.15s ease-in-out;
-          }
-        }
-      }
-    }
-  }
+  margin: 0 auto;
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+}
+>>> .my-gallery {
+  display: flex !important;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  margin: 0 auto !important;
+}
+>>> figure {
+  flex-grow: 1;
+  min-width: 20%;
+  margin-left: 5px;
+  margin-right: 5px;
+  display: flex !important;
+  justify-content: center;
+  align-content: center;
+}
+>>> a {
+  width: 360px;
+  margin-top: 12px;
+  overflow: hidden;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-content: center;
+}
+>>> img {
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
+>>> img:hover {
+  transform: scale(1.1);
+  transition: all 0.5s ease-in-out;
+  box-sizing: border-box;
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
+}
+>>> .pswp__img {
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
+}
+>>> .pswp__img:hover {
+  transform: none !important;
 }
 </style>

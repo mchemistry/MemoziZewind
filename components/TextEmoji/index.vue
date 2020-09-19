@@ -4,14 +4,8 @@
 </template>
 
 <script>
-import _ from 'lodash'
-const EMOJI_SHOTHAND = ['a', 'b', ':dog', ':D']
-const GIF_SOURCE = [
-  'https://data2.m4v.me/images/smileys/simply/(.gif',
-  'https://data2.m4v.me/images/smileys/simply/(.gif',
-  'https://data2.m4v.me/images/smileys/simply/(.gif',
-  'https://data2.m4v.me/images/smileys/simply/(.gif',
-]
+import { EMOJI_SHOTHAND, GIF_SOURCE_API } from '~/constants/emoji'
+
 export default {
   name: 'TextEmoji',
   props: {
@@ -33,22 +27,20 @@ export default {
   },
   methods: {
     convertToTempalte(text) {
-      let result
-      for (let i = 0; i < EMOJI_SHOTHAND.length; i++) {
-        for (let j = 0; j < EMOJI_SHOTHAND.length; j++) {
-          result = _.replace(
-            text,
-            new RegExp(EMOJI_SHOTHAND[i], 'g'),
-            `<img
-              class="emoji-icon"
-              src="${GIF_SOURCE[j]}"
-              alt="Emoji Icon"
-              style="height: ${this.size}px !important; position: relative; top: 3px;"
-            />`
-          )
+      const arrFromText = text.split(' ')
+      for (const i in EMOJI_SHOTHAND) {
+        for (const el in arrFromText) {
+          if (arrFromText[el] === EMOJI_SHOTHAND[i]) {
+            arrFromText[el] = `<img
+                    class="emoji-icon"
+                    src="${GIF_SOURCE_API[i]}"
+                    alt="Emoji Icon"
+                    style="height: ${this.size}px !important; position: relative; top: 3px;"
+                  />`
+          }
         }
       }
-      return result
+      return arrFromText.join(' ')
     },
   },
 }

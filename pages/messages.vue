@@ -1,6 +1,9 @@
 <template>
   <v-container class="py-15" style="z-index: 1 !important">
-    <text-emoji :size="20" text="Em là ai trong thế giới này :D " />
+    <text-emoji
+      :size="20"
+      text="Em là ai trong thế giới này smile dog smileP smileD haha "
+    />
   </v-container>
 </template>
 
