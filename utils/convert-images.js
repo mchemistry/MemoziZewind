@@ -46,29 +46,53 @@ const imageLinks = `<a href="https://ibb.co/55Gr97y"><img src="https://i.ibb.co/
 const arrThumnailsEmbed = thumnailLinks.split(`\n`)
 const arrImageEmbed = imageLinks.split(`\n`)
 
-let convertLinkFromEmbed = (arr) => {
-    for (const i in arr) {
-        arr[i] = arr[i].split(`"`)[3]
-    }
-    return arr
+const convertLinkFromEmbed = (arr) => {
+  for (const i in arr) {
+    arr[i] = arr[i].split(`"`)[3]
+  }
+  return arr
 }
 
 const thumnailLinksConverted = convertLinkFromEmbed(arrThumnailsEmbed)
 const imageLinksConverted = convertLinkFromEmbed(arrImageEmbed)
-let syncImageLinksToObject = () => {
-    let arrResult = []
-    const result = {}
-    for (const i in thumnailLinksConverted) {
-        arrResult.push({
-            src: imageLinksConverted[i],
-            thumbnail: thumnailLinksConverted[i],
-            w: 360,
-            h: 360,
-            alt: 'My Love Image',
-            title: 'Make with heart !!!'
-        })
-    }
-    return arrResult
+const syncImageLinksToObject = () => {
+  const arrResult = new Array(22)
+  for (const i in imageLinksConverted) {
+    getImageDimensions(imageLinksConverted[i])
+      .then((res) => {
+        arrResult[i] = res
+        arrResult[i].src = imageLinksConverted[i]
+        arrResult[i].thumbnail = thumnailLinksConverted[i]
+        arrResult[i].alt = `Image Of My Special Girl`
+        arrResult[i].title = `Made with heart <3`
+      })
+      // eslint-disable-next-line no-console
+      .catch((err) => console.error(err + ''))
+  }
+  return arrResult
 }
 
-console.log(syncImageLinksToObject())
+const getImageDimensions = (url) => {
+  // eslint-disable-next-line promise/param-names
+  return new Promise(function (resolved) {
+    const i = new Image()
+    i.onload = function () {
+      resolved({ w: i.width, h: i.height })
+    }
+    i.src = url
+  })
+}
+
+// eslint-disable-next-line no-console
+const result = syncImageLinksToObject()
+
+setTimeout(() => {
+  const text = result
+    .map(JSON.stringify)
+    .reduce((prev, next) => `[${prev},\n${next}]`)
+  document.write(text)
+  // const data = new Blob([text], { type: 'text/plain' })
+  // const link = document.getElementById('downloadlink')
+  // link.href = window.URL.createObjectURL(data)
+  // link.style.display = 'block'
+}, 500)
