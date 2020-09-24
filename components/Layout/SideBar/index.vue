@@ -57,7 +57,7 @@
           <v-list-item-subtitle
             class="element--text text-subtitle-2 d-flex flex-row"
           >
-            <span class="mt-1">@Menu</span>
+            <span class="mt-1">@MENU</span>
             <v-spacer></v-spacer>
             <v-icon right @click.stop="drawerLeft = !drawerLeft">
               mdi mdi-chevron-double-left
@@ -83,7 +83,7 @@
         <v-list-item-subtitle
           class="element--text text-subtitle-2 d-flex flex-row ml-3"
         >
-          @Setting
+          @SETTING
         </v-list-item-subtitle>
       </v-list-item-content>
       <v-divider></v-divider>
@@ -111,11 +111,15 @@ export default {
   data() {
     return {
       items: [
-        { title: 'TIMES LINE', icon: 'mdi-heart', to: '/' },
-        { title: 'GALLERY', icon: 'mdi-heart', to: '/gallery' },
-        { title: 'MESSAGES', icon: 'mdi-heart', to: '/messages' },
-        { title: 'MUZIK', icon: 'mdi-heart', to: '/muzik' },
-        { title: 'ABOUT', icon: 'mdi-heart', to: '/about' },
+        { title: 'TIMES LINE', icon: 'mdi-altimeter', to: '/' },
+        {
+          title: 'Q & A',
+          icon: 'mdi-comment-question-outline',
+          to: '/questions',
+        },
+        { title: 'GALLERY', icon: 'mdi-folder-multiple-image', to: '/gallery' },
+        { title: 'MUZIK', icon: 'mdi-music-box', to: '/muzik' },
+        { title: 'ABOUT', icon: 'mdi-palette-advanced', to: '/about' },
       ],
       drawerLeft: null,
     }

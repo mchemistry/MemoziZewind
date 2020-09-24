@@ -1,0 +1,147 @@
+<template>
+  <div class="d-flex flex-column justify-center align-center">
+    <strong v-if="!activeMovieCredits" class="element--text project-name"
+      >MEMOZI ZEWIND</strong
+    >
+    <div
+      v-else
+      class="about-page__container"
+      :style="[activeMovieCredits ? { display: 'block' } : '']"
+    >
+      <div
+        v-for="(item, i) in aboutInformations"
+        :key="i"
+        class="mb-10 text-intro"
+      >
+        <p class="job element--text">{{ item.job.toUpperCase() }}</p>
+        <p v-for="(name, j) in item.names" :key="j" class="name text-body-2">
+          {{ name.toUpperCase() }} <br />
+        </p>
+      </div>
+      <p class="text-intro">
+        MADE WITH <v-icon color="red icon-heart">mdi mdi-heart</v-icon> FOR
+        EVERYTHING IN MY MIND !
+      </p>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  layout: 'empty',
+  data() {
+    return {
+      activeMovieCredits: false,
+      aboutInformations: [
+        {
+          job: `Design & Code By`,
+          names: [`TanDV`],
+        },
+        {
+          job: `Framework`,
+          names: [`VUE`, `NUXT`, `VUEX`, 'VUETIFY'],
+        },
+        {
+          job: `Module Dependencies`,
+          names: [
+            `Vue-picture-swipe`,
+            `Aos`,
+            `Nuxt-webfontloader`,
+            `Vue-picture-swipe`,
+          ],
+        },
+        {
+          job: `Repository`,
+          names: [`Github.com/Mchemistry`],
+        },
+        {
+          job: `Audio Service`,
+          names: [
+            `Chiasenhac.com as Cover`,
+            `Lrcgenerator.com as lyric`,
+            `Vocaro.com as Mp3 Api`,
+          ],
+        },
+        {
+          job: `Image API`,
+          names: [`Imgbb.com as API`, 'M4v.vn as Emoji'],
+        },
+        {
+          job: `Image Editor Software`,
+          names: [`Photoshop CS6`, `Lightroom`],
+        },
+        {
+          job: `Message API`,
+          names: [`Api.facebook.com`],
+        },
+      ],
+    }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.activeMovieCredits = true
+    }, 3000)
+  },
+}
+</script>
+
+<style lang="scss" scoped>
+@keyframes credits {
+  0% {
+    top: calc(80vh + 60px);
+  }
+  100% {
+    top: -500%;
+  }
+}
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+.project-name {
+  font-size: 80px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.about-page__container {
+  display: none;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 90vh;
+  width: 90vw;
+  overflow: hidden;
+  .text-intro {
+    position: relative;
+    transition-delay: 0;
+    animation: 60s credits linear infinite;
+    .icon-heart {
+      position: relative;
+      animation: 1.5s blink linear infinite;
+    }
+  }
+  .name {
+    font-size: 16px;
+  }
+  .job {
+    font-size: 24px;
+  }
+}
+@media only screen and (max-width: 1023px) {
+  .project-name {
+    font-size: 40px;
+  }
+}
+</style>

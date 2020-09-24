@@ -183,6 +183,7 @@ export default {
   width: 80px;
   height: 80px;
   margin-top: 10px;
+  border: 5px solid rgba(0, 89, 255, 0.329);
 }
 .muzik-title {
   min-width: 100px;

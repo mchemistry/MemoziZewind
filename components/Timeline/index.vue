@@ -1,19 +1,23 @@
 <template>
   <div>
     <p class="element--text text-h6 text-center">{{ bigTitle }}</p>
-    <v-timeline :dense="true">
+    <v-timeline :dense="$vuetify.breakpoint.smAndDown">
       <v-timeline-item
         v-for="n in 100"
         :key="n"
         :fill-dot="true"
         :icon="icon"
         :icon-color="color"
-        :right="true"
         :small="true"
       >
         <v-card id="timeline" class="elevation-2">
           <v-card-title class="headline pink--text text-subtitle-1">
-            {{ title }}
+            <v-chip class="mx-2 py-1" color="success" text-color="white" label>
+              <!-- <v-avatar left>
+                <v-icon>mdi-book-open-page-variant</v-icon>
+              </v-avatar> -->
+              Ranee </v-chip
+            >{{ title }}
           </v-card-title>
           <v-card-text class="element--text text-subtitle-2">
             {{ content }}
@@ -37,11 +41,11 @@ export default {
     },
     bigTitle: {
       type: String,
-      default: 'CHAPTER #1: WHY ?',
+      default: 'CHAPTER #1: PAIN & DARKNESS',
     },
     icon: {
       type: String,
-      default: 'mdi-heart',
+      default: 'mdi-book-open-page-variant',
     },
     color: {
       type: String,

@@ -35,7 +35,9 @@ export default {
                     class="emoji-icon"
                     src="${GIF_SOURCE_API[i]}"
                     alt="Emoji Icon"
-                    style="height: ${this.size}px !important; position: relative; top: 3px;"
+                    style="height: ${
+                      +this.size + 6
+                    }px !important; position: relative; top: 6px;"
                   />`
           }
         }
@@ -45,10 +47,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.emoji-icon {
-  position: relative;
-  top: 3px;
-}
-</style>
