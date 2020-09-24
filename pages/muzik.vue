@@ -1,8 +1,8 @@
 <template>
-  <div class="muzik mx-auto my-auto">
+  <div id="muzik" class="mx-auto my-auto">
     <client-only>
-      <TrackInfor :current-track="currentTrack" />
-      <ListTracks
+      <track-infor :current-track="currentTrack" />
+      <list-tracks
         :tracks="tracks"
         :is-play="isPlay"
         :is-shuffle="isShuffle"
@@ -13,7 +13,7 @@
         :window-width="windowWidth"
         :window-height="windowHeight"
       />
-      <Lyzik
+      <lyzik
         class="mt-10"
         :top="top"
         :lyzik="currentTrack.lyzik.text"
@@ -21,7 +21,7 @@
         :window-width="windowWidth"
         :window-height="windowHeight"
       />
-      <Player
+      <player
         class="mt-10"
         :is-play="isPlay"
         :duration="currentTrack.duration"
@@ -86,7 +86,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.muzik {
+#muzik {
   width: calc(100vw - 24px);
   max-width: 1366px;
   max-height: 767px;
@@ -99,7 +99,7 @@ export default {
   padding: 0 !important;
 }
 @media only screen and (max-width: 1023px) {
-  .muzik {
+  #muzik {
     width: 100vw !important;
     height: 100vh !important;
     border-radius: 0;

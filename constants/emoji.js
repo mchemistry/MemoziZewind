@@ -1,5 +1,5 @@
 /**
- * @file State constant / ES module
+ * @file Emoji constant / ES module
  * @module emoji.constant
  * @author Tandv <https://github.com/mchemistry>
  */

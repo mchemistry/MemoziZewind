@@ -33,6 +33,7 @@ export default {
           if (arrFromText[el] === EMOJI_SHOTHAND[i]) {
             arrFromText[el] = `<img
                     class="emoji-icon"
+                    v-if="false"
                     src="${GIF_SOURCE_API[i]}"
                     alt="Emoji Icon"
                     style="height: ${

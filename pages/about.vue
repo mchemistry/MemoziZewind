@@ -12,7 +12,7 @@
         <div
           v-for="(item, i) in aboutInformations"
           :key="i"
-          class="mb-10 text-intro"
+          class="mb-10 text__intro"
         >
           <p class="job element--text">{{ item.job.toUpperCase() }}</p>
           <p v-for="(name, j) in item.names" :key="j" class="name text-body-2">
@@ -20,7 +20,7 @@
           </p>
         </div>
         <p class="text-intro">
-          MADE WITH <v-icon color="red icon-heart">mdi mdi-heart</v-icon> FOR
+          MADE WITH <v-icon color="red icon__heart">mdi mdi-heart</v-icon> FOR
           EVERYTHING IN MY MIND !
         </p>
       </div>
@@ -126,11 +126,11 @@ export default {
     height: 90vh;
     width: 90vw;
     overflow: hidden;
-    .text-intro {
+    .text__intro {
       position: relative;
       transition-delay: 0;
       animation: 60s credits linear infinite;
-      .icon-heart {
+      .icon__heart {
         position: relative;
         animation: 1.5s blink linear infinite;
       }

@@ -8,20 +8,13 @@
     ]"
   >
     <div class="spacer"></div>
-    <div class="lyzik-wrap">
+    <div class="lyzik--wrap">
       <span
         v-for="(text, i) in lyzik"
         :key="i"
         class="text-subtitle-2 text-lyzik"
-        :style="[
-          { top: top + 'px' },
-          i === saveIndexOfLyzik - 2
-            ? { color: '#f0a410' }
-            : { color: '#f0a51041' },
-          i === saveIndexOfLyzik - 2
-            ? { 'font-size': 17 + 'px !important' }
-            : '',
-        ]"
+        :class="{ 'text-active': i === saveIndexOfLyzik - 2 }"
+        :style="textLyzikstyle"
         >{{ text }}<br />
       </span>
     </div>
@@ -53,6 +46,21 @@ export default {
       default: 0,
     },
   },
+  computed: {
+    textLyzikstyle() {
+      const style = {}
+      style.top = `${this.top}px`
+      return style
+    },
+    bottomResponsive() {
+      const style = {}
+      style.bottom =
+        this.windowHeight > 767
+          ? `${(this.windowHeight - 767) / 2 + 120}px !important`
+          : '120px'
+      return style
+    },
+  },
 }
 </script>
 
@@ -63,7 +71,7 @@ export default {
   bottom: 120px;
   width: calc(100vw - 400px);
   max-width: 966px;
-  .lyzik-wrap {
+  .lyzik--wrap {
     height: 69px;
     width: 100%;
     float: right;
@@ -74,6 +82,11 @@ export default {
       transition: 0.3s;
       height: 23px !important;
       text-align: center;
+      color: #f0a51041;
+      &.text-active {
+        color: #f0a410 !important;
+        font-size: 16px !important;
+      }
     }
   }
 }

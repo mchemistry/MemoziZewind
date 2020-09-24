@@ -1,6 +1,6 @@
 <template>
   <v-app class="primary d-flex justify-center align-center">
-    <v-btn class="back" icon @click="backToPrevRoute()">
+    <v-btn class="btn__back" icon @click="backToPrevRoute()">
       <v-icon color="white">mdi mdi-arrow-left</v-icon>
     </v-btn>
     <nuxt class="d-flex justify-center align-center" />
@@ -22,7 +22,7 @@ export default {
   width: 100vw !important;
   height: 100vh !important;
   background: #161122;
-  .back {
+  .btn__back {
     position: fixed;
     top: 20px;
     left: 20px;

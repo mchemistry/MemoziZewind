@@ -2,15 +2,15 @@
   <div
     id="player-controller"
     class="d-flex flex-row justify-center align-center"
-    :style="[
-      windowHeight > 767
-        ? { bottom: (windowHeight - 767) / 2 + 'px !important' }
-        : '',
-    ]"
+    :style="style"
   >
-    <div class="image-cover px-3 d-flex flex-row">
-      <img :src="currentTrack.cover" alt="Image Cover" class="img" />
-      <div class="muzik-title py-2 ml-4">
+    <div class="track-info px-3 d-flex flex-row">
+      <img
+        :src="currentTrack.cover"
+        alt="Image Cover"
+        class="track-info__img"
+      />
+      <div class="track-info__title py-2 ml-4">
         <span class="text-subtitle-1">{{ currentTrack.name }}</span>
         <br />
         <span class="text-body-2 light--text">{{ currentTrack.artist }}</span>
@@ -44,7 +44,7 @@
           >mdi mdi-skip-next</v-icon
         >
       </div>
-      <div class="bar-timer d-flex flex-row">
+      <div class="player-swap__bar-timer d-flex flex-row">
         <v-slider
           v-model="timer"
           class="text-subtitle-2 py-0 ml-15 mt-2 timer-slider"
@@ -134,6 +134,12 @@ export default {
         this.slider = val
       },
     },
+    style() {
+      const style = {}
+      style.bottom =
+        this.windowHeight > 767 ? `${(this.windowHeight - 767) / 2}px` : 0
+      return style
+    },
   },
   created() {
     this.checkMuzikPage()
@@ -158,7 +164,6 @@ export default {
 #player-controller {
   height: 100px;
   position: fixed;
-  bottom: 0;
   width: calc(100vw - 400px);
   max-width: 966px;
   margin: 0 10px 10px 10px;
@@ -175,20 +180,20 @@ export default {
 .icon-volume {
   cursor: pointer;
 }
-.image-cover {
+.track-info {
   height: 100px;
   width: 400px;
 }
-.img {
+.track-info__img {
   width: 80px;
   height: 80px;
   margin-top: 10px;
   border: 5px solid rgba(0, 89, 255, 0.329);
 }
-.muzik-title {
+.track-info__title {
   min-width: 100px;
 }
-.bar-timer {
+.player-swap__bar-timer {
   width: 100%;
 }
 span {
@@ -219,7 +224,7 @@ span {
     order: 1;
     margin-bottom: 10px;
   }
-  .bar-timer {
+  .player-swap__bar-timer {
     order: 0;
   }
   .icon-volume {
@@ -241,7 +246,7 @@ span {
   #player-controller {
     width: calc(100vw - 400px);
   }
-  .image-cover {
+  .track-info {
     display: none !important;
   }
 }
@@ -255,12 +260,12 @@ span {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
   }
-  .image-cover {
+  .track-info {
     display: inherit !important;
   }
 }
 @media only screen and (max-width: 600px) {
-  .image-cover {
+  .track-info {
     display: none !important;
   }
   >>> .theme--dark.v-label {

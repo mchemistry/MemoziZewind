@@ -1,5 +1,5 @@
 <template>
-  <div class="nothing"></div>
+  <div id="nothing"></div>
 </template>
 
 <script>
@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.nothing {
+#nothing {
   position: fixed;
   background: transparent;
 }

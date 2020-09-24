@@ -44,7 +44,7 @@
     <v-container class="mt-10">
       <transition name="fade" appear mode="out-in">
         <qna
-          :key="data[active - 1]"
+          :key="data.indexOf(data[active - 1])"
           class="element--text"
           :text="data[active - 1].text"
           :title="data[active - 1].title.toUpperCase()"
