@@ -40,11 +40,13 @@
         </li>
       </ul>
     </div>
+
     <v-container class="mt-10">
-      <transition name="fade" mode="out-in">
+      <transition name="fade" appear mode="out-in">
         <qna
-          :text="data[active - 1].text"
+          :key="data[active - 1]"
           class="element--text"
+          :text="data[active - 1].text"
           :title="data[active - 1].title.toUpperCase()"
           :created="data[active - 1].created"
           :edited="data[active - 1].edited"
@@ -66,13 +68,24 @@ export default {
   data() {
     return {
       data: QNA,
-      showTOC: false,
+      showTOC: true,
       active: 1,
     }
   },
 }
 </script>
 <style lang="scss" scoped>
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 #questions {
   .menu-of-content {
     position: fixed;
@@ -88,7 +101,7 @@ export default {
     top: 0;
     left: 0;
     transition: all 0.3s;
-    background: #161122b7;
+    background: transparent;
     z-index: 1000;
     &--hiden {
       left: calc(-100vw + 300px);
@@ -131,6 +144,12 @@ export default {
       transition: all 0.5s;
       color: #f0a30e !important;
     }
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .toc--outside {
+    background: #161122b7 !important;
   }
 }
 </style>
