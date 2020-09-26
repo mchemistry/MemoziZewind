@@ -13,24 +13,22 @@
       ></v-app-bar-nav-icon>
       <v-toolbar-title>{{ routerName }}</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon @click="prevSong()">
-        <v-icon :disabled="!canPlay" color="white">
-          mdi mdi-skip-previous
-        </v-icon>
+      <v-btn icon :disabled="!canPlay" @click="prevSong()">
+        <v-icon color="white"> mdi mdi-skip-previous </v-icon>
       </v-btn>
-      <v-btn icon @click="playMuzik()">
-        <v-icon :disabled="!canPlay" color="white">
+      <v-btn icon :disabled="!canPlay" @click="playMuzik()">
+        <v-icon color="white">
           {{ isPlay ? 'mdi mdi-pause' : 'mdi mdi-play' }}
         </v-icon>
       </v-btn>
-      <v-btn icon class="mr-10" @click="nextSong()">
-        <v-icon :disabled="!canPlay" color="white"> mdi mdi-skip-next </v-icon>
+      <v-btn icon class="mr-10" :disabled="!canPlay" @click="nextSong()">
+        <v-icon color="white"> mdi mdi-skip-next </v-icon>
       </v-btn>
     </v-app-bar>
     <v-icon
       v-else
       class="menu"
-      :class="isMuzikPage ? 'menu__muzik-page' : ''"
+      :class="isMuzikPage && 'menu__muzik-page'"
       @click.stop="drawerLeft = !drawerLeft"
       >mdi mdi-menu</v-icon
     >
@@ -38,10 +36,10 @@
       v-model="drawerLeft"
       dark
       fixed
-      :color="isMuzikPage ? '' : 'primary'"
-      class="side-bar"
-      :class="isMuzikPage ? 'muzik__side-bar' : ''"
       :style="style"
+      :color="isMuzikPage ? '' : 'primary'"
+      :class="isMuzikPage && 'muzik__side-bar'"
+      class="side-bar"
     >
       <v-list-item>
         <v-list-item-content class="d-flex flex-row">
@@ -61,8 +59,8 @@
         <v-list-item
           v-for="item in menu"
           :key="item.title"
-          link
           :to="item.to"
+          link
           @click="drawerLeft = !drawerLeft"
         >
           <v-list-item-icon>

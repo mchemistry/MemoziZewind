@@ -1,0 +1,45 @@
+{
+ "about" : [
+    {
+      "job": "Design & Code By",
+      "names": ["TanDV"]
+    },
+    {
+      "job": "Framework",
+      "names": ["VUE", "NUXT", "VUEX", "VUETIFY"]
+    },
+    {
+      "job": "Module Dependencies",
+      "names": [
+        "Vue-picture-swipe",
+        "Aos",
+        "Nuxt-webfontloader",
+        "Vue-picture-swipe"
+      ]
+    },
+    {
+      "job": "Repository",
+      "names": ["Github.com/Mchemistry"]
+    },
+    {
+      "job": "Audio Service",
+      "names": [
+        "Chiasenhac.com as Cover",
+        "Lrcgenerator.com as lyric",
+        "Vocaro.com as Mp3 Api"
+      ]
+    },
+    {
+      "job": "Image API",
+      "names": ["Imgbb.com as API", "M4v.vn as Emoji"]
+    },
+    {
+      "job": "Image Editor Software",
+      "names": ["Photoshop CS6", "Lightroom"]
+    },
+    {
+      "job": "Message API",
+      "names": ["Api.facebook.com"]
+    }
+  ]
+}

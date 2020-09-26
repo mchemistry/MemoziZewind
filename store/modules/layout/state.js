@@ -1,5 +1,5 @@
 export const state = () => ({
-  isMuzikPage: false,
+  isMuzikPage: null,
   windowWidth: null,
   windowHeight: null,
   toggleMuzikPlayer: true,

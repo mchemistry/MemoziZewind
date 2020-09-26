@@ -10,12 +10,12 @@
     </v-btn>
     <div
       class="toc--outside"
-      :class="[showTOC ? 'toc--outside--hiden' : '']"
+      :class="{ 'toc--outside--hiden': showTOC }"
       @click="showTOC = !showTOC"
     ></div>
     <div
       class="toc--inside text-center"
-      :class="[showTOC ? 'toc--inside--hiden' : '']"
+      :class="{ 'toc--inside--hiden': showTOC }"
     >
       <div class="element--text text-subtitle-2">
         <v-btn icon class="close-toc" @click.stop="showTOC = !showTOC">
@@ -26,17 +26,15 @@
       <v-divider class="mt-3"></v-divider>
       <ul>
         <li
-          v-for="(item, index) in data"
+          v-for="(title, index) in qnaTitle"
           :key="index"
-          class="light--text"
-          :class="[active === index + 1 ? 'element--text' : '']"
+          :class="active === index + 1 ? 'element--text' : 'light--text'"
           @click="
             active = index + 1
             showTOC = !showTOC
           "
         >
-          #{{ index + 1 }} -
-          {{ item.title.toUpperCase() }}
+          {{ title }}
         </li>
       </ul>
     </div>
@@ -44,12 +42,12 @@
     <v-container class="mt-10">
       <transition name="fade" appear mode="out-in">
         <qna
-          :key="data.indexOf(data[active - 1])"
+          :key="qnaData.indexOf(qnaData[active - 1])"
           class="element--text"
-          :text="data[active - 1].text"
-          :title="data[active - 1].title.toUpperCase()"
-          :created="data[active - 1].created"
-          :edited="data[active - 1].edited"
+          :text="qnaData[active - 1].text"
+          :title="qnaData[active - 1].title.toUpperCase()"
+          :created="qnaData[active - 1].created"
+          :edited="qnaData[active - 1].edited"
         />
       </transition>
     </v-container>
@@ -57,9 +55,8 @@
 </template>
 
 <script>
+import { qna } from '@/static/data/qna.json'
 import QuestionsAndAnswer from '../components/QuestionsAndAnswer'
-import qna from '../static/data/qna.json'
-const QNA = qna.qna
 export default {
   layout: 'default',
   components: {
@@ -67,25 +64,18 @@ export default {
   },
   data() {
     return {
-      data: QNA,
       showTOC: true,
       active: 1,
     }
   },
+  computed: {
+    qnaData: () => qna,
+    qnaTitle: () =>
+      qna.map((el, index) => `${index + 1}: ${el.title.toUpperCase()}`),
+  },
 }
 </script>
 <style lang="scss" scoped>
-@keyframes bounce-in {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1.5);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
 #questions {
   .menu-of-content {
     position: fixed;
@@ -137,6 +127,7 @@ export default {
       font-size: 12px;
       margin-top: 16px;
       float: left;
+      clear: both;
       cursor: pointer;
     }
     ul > li:hover {

@@ -1,6 +1,7 @@
 export const mutations = {
   CHECK_MUZIK_PAGE(state) {
-    state.isMuzikPage = this.app.router.history.current.name === 'muzik'
+    state.isMuzikPage =
+      this.app.router.history.current.name === 'muzik' ? true : null
   },
   GET_LAYOUT_SIZE(state) {
     state.windowWidth = window.innerWidth

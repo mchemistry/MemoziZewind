@@ -7,13 +7,9 @@
       <div
         v-else
         class="about-page__container"
-        :style="[activeMovieCredits ? { display: 'block' } : '']"
+        :style="activeMovieCredits && { display: 'block' }"
       >
-        <div
-          v-for="(item, i) in aboutInformations"
-          :key="i"
-          class="mb-10 text__intro"
-        >
+        <div v-for="(item, i) in aboutData" :key="i" class="mb-10 text__intro">
           <p class="job element--text">{{ item.job.toUpperCase() }}</p>
           <p v-for="(name, j) in item.names" :key="j" class="name text-body-2">
             {{ name.toUpperCase() }} <br />
@@ -29,55 +25,16 @@
 </template>
 
 <script>
+import { about } from '@/static/data/about.json'
 export default {
   layout: 'empty',
   data() {
     return {
-      activeMovieCredits: false,
-      aboutInformations: [
-        {
-          job: `Design & Code By`,
-          names: [`TanDV`],
-        },
-        {
-          job: `Framework`,
-          names: [`VUE`, `NUXT`, `VUEX`, 'VUETIFY'],
-        },
-        {
-          job: `Module Dependencies`,
-          names: [
-            `Vue-picture-swipe`,
-            `Aos`,
-            `Nuxt-webfontloader`,
-            `Vue-picture-swipe`,
-          ],
-        },
-        {
-          job: `Repository`,
-          names: [`Github.com/Mchemistry`],
-        },
-        {
-          job: `Audio Service`,
-          names: [
-            `Chiasenhac.com as Cover`,
-            `Lrcgenerator.com as lyric`,
-            `Vocaro.com as Mp3 Api`,
-          ],
-        },
-        {
-          job: `Image API`,
-          names: [`Imgbb.com as API`, 'M4v.vn as Emoji'],
-        },
-        {
-          job: `Image Editor Software`,
-          names: [`Photoshop CS6`, `Lightroom`],
-        },
-        {
-          job: `Message API`,
-          names: [`Api.facebook.com`],
-        },
-      ],
+      activeMovieCredits: null,
     }
+  },
+  computed: {
+    aboutData: () => about,
   },
   mounted() {
     setTimeout(() => {
