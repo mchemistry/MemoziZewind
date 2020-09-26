@@ -1,5 +1,5 @@
 <template>
-  <span class="text-emoji" :style="style" v-html="convertToTempalte(text)">
+  <span class="text-emoji" :style="style" v-html="convertToTemplate(text)">
   </span>
 </template>
 
@@ -26,7 +26,7 @@ export default {
     },
   },
   methods: {
-    convertToTempalte(text) {
+    convertToTemplate(text) {
       const arrFromText = text.split(' ')
       for (const i in EMOJI_SHOTHAND) {
         for (const el in arrFromText) {

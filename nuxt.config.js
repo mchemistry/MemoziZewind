@@ -53,6 +53,7 @@ export default {
    */
   plugins: [
     '~/plugins/vue-scroll.js',
+    { src: '~/plugins/text-emoji.js', mode: 'client' },
     { src: '~/plugins/aos.js', mode: 'client' },
     { src: '~/plugins/gallery', mode: 'client' },
   ],
@@ -129,5 +130,9 @@ export default {
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {},
+  build: {
+    extend(config) {
+      config.resolve.alias.vue = 'vue/dist/vue.common'
+    },
+  },
 }

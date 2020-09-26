@@ -5,17 +5,13 @@
     </h3>
     <slot name="createdTime" />
     <br class="mb-4" />
-    <TextEmoji :text="text" class="white--text" />
+    <text-emoji :text="text" class="white--text" />
   </section>
 </template>
 
 <script>
-import TextEmoji from '../TextEmoji'
 export default {
   name: 'QuestionsAndAnswer',
-  components: {
-    TextEmoji,
-  },
   props: {
     title: {
       type: String,
