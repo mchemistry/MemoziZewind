@@ -28,7 +28,7 @@
           >mdi mdi-skip-previous</v-icon
         >
         <v-icon
-          class="icon-player"
+          class="icon-player btn__player"
           :disabled="!canPlay"
           color="white"
           x-large
@@ -180,6 +180,17 @@ export default {
 .icon-volume {
   cursor: pointer;
 }
+.btn__player {
+  border-radius: 50%;
+  border: 6px solid rgba(245, 222, 179, 0.37);
+  padding: 0 !important;
+  transition: all 0.5s;
+}
+.btn__player:hover {
+  border: 6px solid rgba(245, 222, 179, 0.6);
+  transition: all 0.5s;
+}
+
 .track-info {
   height: 100px;
   width: 400px;

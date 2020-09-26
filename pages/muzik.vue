@@ -66,7 +66,6 @@ export default {
       'currentTrack',
       'muted',
       'top',
-      'lyzik',
       'saveIndexOfLyzik',
       'currentTrackIndex',
     ]),

@@ -46,9 +46,21 @@
           class="element--text"
           :text="qnaData[active - 1].text"
           :title="qnaData[active - 1].title.toUpperCase()"
-          :created="qnaData[active - 1].created"
-          :edited="qnaData[active - 1].edited"
-        />
+        >
+          <template
+            v-if="qnaData[active - 1].created && qnaData[active - 1].edited"
+            #createdTime
+          >
+            <span class="text-body-2 light--text text-center py-0 my-0">
+              <v-icon small class="icon">mdi mdi-clock</v-icon> Created Time:
+              {{ qnaData[active - 1].created }}
+            </span>
+            <span class="text-body-2 light--text text-center ml-4">
+              <v-icon small class="icon">mdi mdi-table-edit</v-icon> Last
+              Edited: {{ qnaData[active - 1].edited }}</span
+            >
+          </template>
+        </qna>
       </transition>
     </v-container>
   </v-app>

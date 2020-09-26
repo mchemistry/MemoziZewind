@@ -1,11 +1,7 @@
 <template>
   <div
     class="lyzik d-flex flex-row justfy-center align-center mb-3"
-    :style="[
-      windowHeight > 767
-        ? { bottom: (windowHeight - 767) / 2 + 120 + 'px !important' }
-        : '',
-    ]"
+    :style="bottomResponsive"
   >
     <div class="spacer"></div>
     <div class="lyzik--wrap">
@@ -13,7 +9,7 @@
         v-for="(text, i) in lyzik"
         :key="i"
         class="text-subtitle-2 text-lyzik"
-        :class="{ 'text-active': i === saveIndexOfLyzik - 2 }"
+        :class="i === saveIndexOfLyzik - 2 && 'text-active'"
         :style="textLyzikstyle"
         >{{ text }}<br />
       </span>
@@ -68,7 +64,6 @@ export default {
 .lyzik {
   height: 69px;
   position: fixed;
-  bottom: 120px;
   width: calc(100vw - 400px);
   max-width: 966px;
   .lyzik--wrap {

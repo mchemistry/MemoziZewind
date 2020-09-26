@@ -15,14 +15,7 @@
       :width="320"
       class="list-of-tracks mr-3"
       color="transparent"
-      :style="[
-        windowWidth > 1366
-          ? { 'margin-right': (windowWidth - 1366) / 2 + 'px !important' }
-          : '',
-        windowHeight > 767
-          ? { 'margin-top': (windowHeight - 767) / 2 + 'px !important' }
-          : '',
-      ]"
+      :style="style"
     >
       <v-list-item class="px-0">
         <v-list-item-content class="mx-2">
@@ -69,10 +62,10 @@
             :key="item.name"
             color="transparent"
             class="list-item"
-            :style="[
-              index === currentTrackIndex ? { 'padding-left': 23 + 'px' } : '',
-            ]"
-            @click="canPlay ? playTrackIndex(index) : null"
+            :style="
+              index === currentTrackIndex && { 'padding-left': 23 + 'px' }
+            "
+            @click="canPlay && playTrackIndex(index)"
           >
             <v-list-item-icon class="mr-4">
               <v-icon>
@@ -118,11 +111,11 @@ export default {
     },
     isPlay: {
       type: Boolean,
-      default: false,
+      default: null,
     },
     isShuffle: {
       type: Boolean,
-      default: false,
+      default: null,
     },
     repeat: {
       type: Number,
@@ -186,6 +179,20 @@ export default {
       maxHeight: 1,
     },
   }),
+  computed: {
+    style() {
+      const style = {}
+      style['margin-top'] =
+        this.windowHeight > 767
+          ? `${(this.windowHeight - 767) / 2}px !important`
+          : '12px'
+      style['margin-right'] =
+        this.windowWidth > 1366
+          ? `${(this.windowWidth - 1366) / 2}px !important`
+          : '12px'
+      return style
+    },
+  },
   methods: {
     ...mapActions('muzik', ['shuffleTracks', 'repeatTrack', 'playTrackIndex']),
   },
@@ -200,7 +207,6 @@ export default {
 }
 .list-of-tracks {
   height: calc(100vh - 24px) !important;
-  margin-top: 12px;
   max-height: 767px;
 }
 .flip-list-move {
@@ -216,6 +222,7 @@ export default {
   );
   z-index: -1;
   left: 0;
+  transition: all 0.3s;
 }
 .name-of-song {
   width: 194px !important;

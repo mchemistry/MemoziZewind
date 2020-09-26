@@ -3,14 +3,7 @@
     <h3 class="text-center mb-2">
       {{ title }}
     </h3>
-    <span class="text-body-2 light--text text-center py-0 my-0">
-      <v-icon small class="icon">mdi mdi-clock</v-icon> Created Time:
-      {{ created }}
-    </span>
-    <span class="text-body-2 light--text text-center ml-4">
-      <v-icon small class="icon">mdi mdi-table-edit</v-icon> Last Edited:
-      {{ edited }}</span
-    >
+    <slot name="createdTime" />
     <br class="mb-4" />
     <TextEmoji :text="text" class="white--text" />
   </section>

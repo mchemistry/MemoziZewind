@@ -1,11 +1,11 @@
 <template>
   <div id="about" class="d-flex flex-column justify-center align-center">
     <transition name="fade" appear mode="out-in">
-      <strong v-if="!activeMovieCredits" class="element--text project-name"
+      <strong v-if="activeMovieCredits === 1" class="element--text project-name"
         >MEMOZI ZEWIND</strong
       >
       <div
-        v-else
+        v-else-if="activeMovieCredits === 2"
         class="about-page__container"
         :style="activeMovieCredits && { display: 'block' }"
       >
@@ -15,22 +15,24 @@
             {{ name.toUpperCase() }} <br />
           </p>
         </div>
-        <p class="text-intro">
-          MADE WITH <v-icon color="red icon__heart">mdi mdi-heart</v-icon> FOR
-          EVERYTHING IN MY MIND !
-        </p>
       </div>
+      <p v-else class="final-text text-h5">
+        MADE WITH <v-icon color="red icon__heart">mdi mdi-heart</v-icon> FOR
+        EVERYTHING IN MY MIND !
+      </p>
     </transition>
   </div>
 </template>
 
 <script>
 import { about } from '@/static/data/about.json'
+const ABOUT_STATUS = Object.freeze({ LOGO: 1, INFO: 2, MADE: 3 })
+
 export default {
   layout: 'empty',
   data() {
     return {
-      activeMovieCredits: null,
+      activeMovieCredits: ABOUT_STATUS.LOGO,
     }
   },
   computed: {
@@ -38,35 +40,16 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-      this.activeMovieCredits = true
+      this.activeMovieCredits = ABOUT_STATUS.INFO
     }, 3000)
+    setTimeout(() => {
+      this.activeMovieCredits = ABOUT_STATUS.MADE
+    }, 23000)
   },
 }
 </script>
 
 <style lang="scss" scoped>
-@keyframes credits {
-  0% {
-    top: calc(80vh + 60px);
-  }
-  100% {
-    top: -500%;
-  }
-}
-@keyframes blink {
-  0% {
-    opacity: 0;
-  }
-  25% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.5;
-  }
-}
 #about {
   .project-name {
     font-size: 80px;
@@ -87,23 +70,30 @@ export default {
       position: relative;
       transition-delay: 0;
       animation: 60s credits linear infinite;
-      .icon__heart {
-        position: relative;
-        animation: 1.5s blink linear infinite;
+      .name {
+        font-size: 16px;
+      }
+      .job {
+        font-size: 24px;
       }
     }
-    .name {
-      font-size: 16px;
-    }
-    .job {
-      font-size: 24px;
+  }
+  .final-text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    .text--icon__heart {
+      animation: heart-beats 2s infinite;
     }
   }
 }
 
 @media only screen and (max-width: 1023px) {
   .project-name {
-    font-size: 40px;
+    font-size: 40px !important;
+  }
+  .final-text {
+    font-size: 16px !important;
   }
 }
 </style>

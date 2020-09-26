@@ -3,7 +3,7 @@
     id="player-dragable"
     ref="player-dragable"
     class="d-flex flex-row justify-center align-center"
-    :style="show ? { opacity: 1 } : {}"
+    :style="show && { opacity: 1 }"
     @mouseover="show = true"
     @mouseleave="show = false"
     @dragstart="(e) => initDragableEvent(e)"
@@ -14,7 +14,7 @@
       class="muzik-cover"
       :src="currentTrack.cover"
       alt="muzik cover"
-      :style="style"
+      :class="isPlay && 'play'"
     />
     <v-slide-x-transition>
       <div v-if="show" class="player-controller d-flex flex-row py-1">
@@ -67,15 +67,6 @@ export default {
       dragable: null,
     }
   },
-  computed: {
-    style() {
-      const style = {}
-      style.animation = this.isPlay
-        ? 'rotation-data-v-341b41c8 10s infinite linear'
-        : ''
-      return style
-    },
-  },
   mounted() {
     this.dragable = this.$refs['player-dragable']
     this.width = this.dragable.offsetWidth
@@ -114,15 +105,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-@keyframes rotation {
-  from {
-    -webkit-transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-  }
-}
+<style lang="scss">
 #player-dragable {
   position: fixed;
   height: 3.5rem;
@@ -136,6 +119,11 @@ export default {
     border-radius: 50%;
     border: 0.25rem solid rgba(0, 89, 255, 0.329);
     z-index: 99;
+    animation: rotation 10s infinite linear;
+    animation-play-state: paused;
+    &.play {
+      animation-play-state: running;
+    }
   }
   .player-controller {
     position: relative;
