@@ -12,16 +12,19 @@ import { EMOJI_SHOTHAND, GIF_SOURCE_API } from '@/constants/emoji'
 
 Vue.component('text-emoji', {
   props: {
+    // as size of text and height of image
     size: {
       type: [String, Number],
       default: '16',
     },
+    // raw text need convert to string template
     text: {
       type: String,
       default: '',
     },
   },
   computed: {
+    // style for span tag
     style() {
       const style = {}
       style['font-size'] = this.size + 'px'
@@ -29,6 +32,11 @@ Vue.component('text-emoji', {
     },
   },
   methods: {
+    /**
+     * Sync text
+     * @param {string} text as text need convert to string template
+     * @return {string} as string template
+     */
     convertToTemplate(text) {
       const arrFromText = text.split(' ')
       for (const i in EMOJI_SHOTHAND) {
@@ -44,19 +52,19 @@ Vue.component('text-emoji', {
           }
         }
       }
-      return arrFromText.join(' ')
+      return arrFromText.join(' ') // concat elements of array to string template
     },
   },
   render(createElm) {
     const emojiConverted = createElm({
-      template: `<span>${this.convertToTemplate(this.text)}</span>`,
+      template: `<span>${this.convertToTemplate(this.text)}</span>`, // convert string template to HTML
     })
     const span = createElm(
       'span',
       {
-        style: this.style,
+        style: this.style, // set style for span tag
       },
-      [emojiConverted]
+      [emojiConverted] // inside span tag
     )
     return span
   },
