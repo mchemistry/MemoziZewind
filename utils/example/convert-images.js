@@ -151,8 +151,8 @@ setTimeout(() => {
     .map(JSON.stringify)
     .reduce((prev, next) => `${prev},\n${next}`)
   document.write(text)
-  // const data = new Blob([text], { type: 'text/plain' })
-  // const link = document.getElementById('downloadlink')
-  // link.href = window.URL.createObjectURL(data)
-  // link.style.display = 'block'
+  const data = new Blob([text], { type: 'text/plain' })
+  const link = document.getElementById('downloadlink')
+  link.href = window.URL.createObjectURL(data)
+  link.style.display = 'block'
 }, 15000)
