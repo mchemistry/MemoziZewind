@@ -3,11 +3,11 @@
     <p class="element--text text-h6 text-center">{{ bigTitle }}</p>
     <v-timeline :dense="$vuetify.breakpoint.smAndDown">
       <v-timeline-item
-        v-for="n in 100"
-        :key="n"
+        v-for="(n, i) in data"
+        :key="i"
         :fill-dot="true"
-        :icon="icon"
-        :icon-color="color"
+        :icon="n.icon"
+        :icon-color="n.color"
         :small="true"
       >
         <v-card id="timeline" class="elevation-2">
@@ -16,11 +16,14 @@
               <!-- <v-avatar left>
                 <v-icon>mdi-book-open-page-variant</v-icon>
               </v-avatar> -->
-              Ranee </v-chip
-            >{{ title }}
+              {{ n.book }} </v-chip
+            >{{ n.title }}
           </v-card-title>
+          <div class="d-flex justify-center align-center">
+            <img v-if="n.hasImg" :src="n.imgSrc" alt="image" />
+          </div>
           <v-card-text class="element--text text-subtitle-2">
-            {{ content }}
+            {{ n.content }}
           </v-card-text>
         </v-card>
       </v-timeline-item>
@@ -60,11 +63,28 @@ export default {
       default: true,
     },
   },
+  data() {
+    return {
+      data: [
+        {
+          title: '12 / 06 / 2019 - RIP NEKO !',
+          content:
+            'Nó là mèo đực, nó đã đến tuổi, nó đi suốt , chỉ có tối mới về, ăn cơm rồi lại đi. Lần này mẹ tôi đã biết ý xích nó lại trong đoạn thép fi-6. Nó không như mọi ngày, hôm nay có gì đó khác lạ lắm, nó không ăn cơm, mặc dù cơm rất ngon. Đến tối nó vùng vẫy đứt luôn cả đoạn dây thép đo, rồi đi mất..... Cho đến hôm nay đã 1 tuần , tôi k thấy nó về nữa...',
+          icon: 'mdi-cat',
+          color: 'red',
+          hasImg: false,
+          book: 'CAT',
+          ref: [12, 6, 19],
+        },
+      ],
+    }
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 img {
-  max-height: 150px;
+  width: 80%;
+  margin: 0 auto;
 }
 </style>

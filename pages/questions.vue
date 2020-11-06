@@ -40,7 +40,7 @@
     </div>
 
     <v-container class="mt-10">
-      <transition name="fade" appear mode="out-in">
+      <transition name="fade" mode="out-in">
         <qna
           :key="qnaData.indexOf(qnaData[active - 1])"
           class="element--text"

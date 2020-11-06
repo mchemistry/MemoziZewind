@@ -4,6 +4,9 @@ export const mutations = {
   INIT_AUDIO: (state) => {
     state.currentTrackIndex = 0
     state.currentTrack = state.tracks[0]
+    state.imgFront = state.tracks[0].cover
+    state.imgBack = state.tracks[1].cover
+    state.indexOfNextTrack = 0
     state.canPlay = false
     state.audio = new Audio()
     state.audio.src = state.tracks[0].source
@@ -29,7 +32,7 @@ export const mutations = {
             }
           })
           .then(() => {
-            state.canPlay = true
+            setTimeout(() => (state.canPlay = true), 500)
             state.audio.play()
             state.isTimerPlaying = true
             state.isPlay = true
@@ -44,14 +47,22 @@ export const mutations = {
     }
   },
   PREV_SONG: (state) => {
+    state.oldState = state.state
+    state.state = 'prev'
     if (state.currentTrackIndex > 0) {
       state.currentTrackIndex--
     } else {
       state.currentTrackIndex = state.tracks.length - 1
     }
     state.currentTrack = state.tracks[state.currentTrackIndex]
+    state.imgBack = state.tracks[state.currentTrackIndex].cover
+    setTimeout(() => {
+      state.imgFront = state.tracks[state.currentTrackIndex].cover
+    }, 900)
   },
   NEXT_SONG: (state) => {
+    state.oldState = state.state
+    state.state = 'next'
     if (_.isEqual(state.repeat, 2)) {
       // eslint-disable-next-line no-self-assign
       state.currentTrackIndex = state.currentTrackIndex
@@ -61,6 +72,10 @@ export const mutations = {
       state.currentTrackIndex = 0
     }
     state.currentTrack = state.tracks[state.currentTrackIndex]
+    setTimeout(() => {
+      state.imgFront = state.tracks[state.currentTrackIndex].cover
+    }, 900)
+    state.imgBack = state.tracks[state.currentTrackIndex].cover
   },
   RESET_PLAYER: (state) => {
     state.canPlay = false

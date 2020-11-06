@@ -12,4 +12,7 @@ export const getters = {
   muted: ({ muted }) => muted,
   currentTrackIndex: ({ currentTrackIndex }) => currentTrackIndex,
   currentTrack: ({ currentTrack }) => currentTrack,
+  imgFront: ({ imgFront }) => imgFront,
+  imgBack: ({ imgBack }) => imgBack,
+  state: ({ state }) => state,
 }

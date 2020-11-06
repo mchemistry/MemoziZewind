@@ -55,8 +55,18 @@ export const actions = {
         state.isPlay = false
       }
     } else {
+      state.oldState = state.state
+      if (index > state.currentTrackIndex) {
+        state.state = 'next'
+      } else {
+        state.state = 'prev'
+      }
       state.currentTrackIndex = index
       state.currentTrack = state.tracks[index]
+      setTimeout(() => {
+        state.imgFront = state.tracks[state.currentTrackIndex].cover
+      }, 900)
+      state.imgBack = state.tracks[state.currentTrackIndex].cover
       dispatch('resetPlayer')
     }
   },

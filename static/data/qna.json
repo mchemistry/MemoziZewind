@@ -3,26 +3,26 @@
         {
             "created": null,
             "edited": null,
-            "title": "Test QNA #1",
-            "text": "smileD just a test!!!"        
+            "title": "Q & A là gì ?",
+            "text": "smileD"        
         },
         {
             "created": "20/08/2019",
             "edited": "14/01/2020",
-            "title": "Test QNA #2",
-            "text": "gyy test"        
+            "title": "Ex1",
+            "text": ""        
         },
         {
             "created": "17/10/2019",
             "edited": "02/08/2020",
-            "title": "Test QNA #3",
-            "text": "smileP"        
+            "title": "Ex2",
+            "text": ""        
         },
         {
             "created": "20/08/2019",
             "edited": "14/01/2020",
-            "title": "Test QNA #4",
-            "text": "es"
+            "title": "Ex3",
+            "text": ""
         }
     ]
 }

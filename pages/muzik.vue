@@ -1,7 +1,12 @@
 <template>
   <div id="muzik" class="mx-auto my-auto">
     <client-only>
-      <track-infor :current-track="currentTrack" />
+      <track-infor
+        :img-front="imgFront"
+        :img-back="imgBack"
+        :current-track-index="currentTrackIndex"
+        :state="state"
+      />
       <list-tracks
         :tracks="tracks"
         :is-play="isPlay"
@@ -68,6 +73,9 @@ export default {
       'top',
       'saveIndexOfLyzik',
       'currentTrackIndex',
+      'imgFront',
+      'imgBack',
+      'state',
     ]),
     head() {
       return {

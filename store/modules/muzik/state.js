@@ -17,4 +17,7 @@ export const state = () => ({
   top: 0,
   saveIndexOfLyzik: 3,
   muted: false,
+  imgFront: null,
+  imgBack: null,
+  state: null,
 })
