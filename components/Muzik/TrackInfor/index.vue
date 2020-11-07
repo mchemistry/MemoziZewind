@@ -85,57 +85,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.flip-enter-active {
-  animation: flip 1.5s forwards;
-}
-
-.reverse-flip-enter-active {
-  animation: reverse-flip 1.5s forwards;
-}
-@keyframes flip {
-  0% {
-    -webkit-transform: rotateY(0deg);
-    transform: rotateY(0deg);
-  }
-  20% {
-    -webkit-transform: rotateY(-30deg);
-    transform: rotateY(-30deg);
-  }
-  50% {
-    -webkit-transform: rotateY(195deg);
-    transform: rotateY(195deg);
-  }
-  75% {
-    -webkit-transform: rotateY(165deg);
-    transform: rotateY(165deg);
-  }
-  100% {
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-  }
-}
-@keyframes reverse-flip {
-  0% {
-    -webkit-transform: rotateY(0deg);
-    transform: rotateY(0deg);
-  }
-  20% {
-    -webkit-transform: rotateY(30deg);
-    transform: rotateY(30deg);
-  }
-  50% {
-    -webkit-transform: rotateY(-195deg);
-    transform: rotateY(-195deg);
-  }
-  75% {
-    -webkit-transform: rotateY(-165deg);
-    transform: rotateY(-165deg);
-  }
-  100% {
-    -webkit-transform: rotateY(-180deg);
-    transform: rotateY(-180deg);
-  }
-}
 .track-infomations {
   position: absolute;
   top: calc(50vh - 280px);
@@ -156,8 +105,11 @@ export default {
       transition: all 0.8s;
       -webkit-transform-style: preserve-3d;
       transform-style: preserve-3d;
-      &.flip {
+      &.flip-enter-active {
         animation: flip 1.5s forwards;
+      }
+      &.reverse-flip-enter-active {
+        animation: reverse-flip 1.5s forwards;
       }
     }
     .image-front,

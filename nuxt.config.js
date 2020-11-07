@@ -3,7 +3,7 @@ import { meta } from './config/app.config'
 export default {
   server: {
     port: 8000, // default: 3000
-    host: '192.168.1.107', // default: localhost
+    host: '192.168.1.4', // default: localhost
   },
   /*
    ** Nuxt rendering mode

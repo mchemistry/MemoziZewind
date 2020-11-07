@@ -20,4 +20,5 @@ export const state = () => ({
   imgFront: null,
   imgBack: null,
   state: null,
+  show: false,
 })

@@ -45,7 +45,7 @@ export default {
   computed: {
     textLyzikstyle() {
       const style = {}
-      style.top = `${this.top}px`
+      style.transform = `translateY(${this.top}px) scale(var(--scale))`
       return style
     },
     bottomResponsive() {
@@ -61,6 +61,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$scale: 1;
 .lyzik {
   height: 69px;
   position: fixed;
@@ -74,13 +75,16 @@ export default {
     span {
       display: block;
       position: relative;
-      transition: 0.3s;
+      transition: all 0.3s;
       height: 23px !important;
       text-align: center;
       color: #f0a51041;
+
+      --scale: 1;
       &.text-active {
         color: #f0a410 !important;
-        font-size: 16px !important;
+
+        --scale: 1.15;
       }
     }
   }

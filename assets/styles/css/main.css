@@ -10,4 +10,10 @@ body {
     box-sizing: border-box;
     overflow: auto !important;
   }
-  
+:root {
+  --b1: 0deg;
+  --b2: -30deg;
+  --b3: 195deg;
+  --b4: 165deg;
+  --b5: 180deg;
+}

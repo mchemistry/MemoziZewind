@@ -15,4 +15,5 @@ export const getters = {
   imgFront: ({ imgFront }) => imgFront,
   imgBack: ({ imgBack }) => imgBack,
   state: ({ state }) => state,
+  show: ({ show }) => show,
 }
